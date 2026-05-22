@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --color-rose-50: #fff1f2;
+  --color-rose-950: #4c0519;
+  --color-brand: #be185d;
+  --color-brand-light: #f472b6;
+  --color-surface: #0f0a0c;
+  --color-panel: #1a1215;
+  --color-panel-border: #3d2430;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-surface);
+  color: #fce7f3;
+  -webkit-font-smoothing: antialiased;
+}
+
+html[dir='ltr'] body {
+  font-family: system-ui, 'Segoe UI', sans-serif;
+}
+
+/* subtle animated grid background */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(190, 24, 93, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(190, 24, 93, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.glass {
+  background: rgba(26, 18, 21, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-panel-border);
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #3d2430 !important;
+}
+
+.recharts-text {
+  fill: #f9a8d4 !important;
+  font-size: 12px;
+}
+
+.recharts-default-tooltip {
+  background: #1a1215 !important;
+  border: 1px solid #3d2430 !important;
+  border-radius: 8px !important;
+}
+
+.recharts-tooltip-label,
+.recharts-tooltip-item-name,
+.recharts-tooltip-item-value,
+.recharts-tooltip-item-list li {
+  color: #ffffff !important;
+}
+
+/* Keep bar charts LTR so labels stay left + bars right (site may be RTL) */
+[dir='ltr'] .recharts-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mobile: larger touch targets, safe areas */
+@media (max-width: 767px) {
+  input,
+  select,
+  button {
+    min-height: 44px;
+  }
+
+  select {
+    font-size: 16px; /* prevents iOS zoom on focus */
+  }
+}
+
+.touch-manipulation {
+  touch-action: manipulation;
+}
